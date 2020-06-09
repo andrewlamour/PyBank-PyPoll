@@ -14,29 +14,27 @@ with open(budget_data, newline="") as csvfile:
     P = []
     months = []
 
-    #read through each row of data after header
     for rows in csvreader:
         P.append(int(rows[1]))
         months.append(rows[0])
 
-    # find revenue change
     revenue_change = []
 
     for x in range(1, len(P)):
         revenue_change.append((int(P[x]) - int(P[x-1])))
     
-    # calculate average revenue change
+    #average revenue change
     revenue_average = sum(revenue_change) / len(revenue_change)
     
-    # calculate total length of months
+    #total length of months
     total_months = len(months)
 
-    # greatest increase/decrease in revenue
+    #increase/decrease in revenue
     greatest_increase = max(revenue_change)
     greatest_decrease = min(revenue_change)
 
 
-    # print the Results
+    #Results 
     print("Financial Analysis")
     print("Total Months: " + str(total_months))
     print("Total: $" + str(sum(P)))
